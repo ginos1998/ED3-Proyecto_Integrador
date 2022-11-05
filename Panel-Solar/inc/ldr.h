@@ -15,6 +15,7 @@
 #include "lpc17xx_timer.h"
 
 #include "stepper_motor.h"
+#include "bluetooh.h"
 
 #define PORT_0 (uint8_t) 0
 #define CH0 (uint8_t) 0

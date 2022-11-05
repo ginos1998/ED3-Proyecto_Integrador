@@ -6,7 +6,7 @@
  * Generated linker script file for LPC1769
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.6.0 [Build 8187] [2022-07-13] on 3 nov. 2022 20:42:23
+ * MCUXpresso IDE v11.6.0 [Build 8187] [2022-07-13] on 5 nov. 2022 19:07:28
  */
 
 INCLUDE "Panel-Solar_Debug_library.ld"

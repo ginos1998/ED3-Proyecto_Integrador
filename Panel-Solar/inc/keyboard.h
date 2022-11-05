@@ -27,11 +27,16 @@ typedef enum{
 	PIN_4 = (uint32_t) 4,
 	PIN_5 = (uint32_t) 5,
 	PIN_6 = (uint32_t) 6,
-	PIN_7 = (uint32_t) 7
+	PIN_7 = (uint32_t) 7,
+	// pin asociado al sensor 'final de carrera'
+	PIN_18 = (uint32_t) 18,
+	// pin asociado al LED de la placa
+	PIN_22 = (uint32_t) 22
 }PINES;
 
 // puerto asociado al teclado
 #define PORT_2 (uint8_t) 2
+#define PORT_0 (uint8_t) 0
 #define OUTPUT (uint8_t) 1
 #define INPUT  (uint8_t) 0
 #define RISING_EDGE  (uint8_t) 0

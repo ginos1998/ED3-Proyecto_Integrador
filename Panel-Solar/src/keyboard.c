@@ -8,14 +8,14 @@
 
 uint8_t col_val = 0;
 
-uint8_t keyboard[4][4] = {{1, 2, 3, 65},
+int keyboard[4][4] = {{1, 2, 3, 65},
 						{4, 5, 6, 66},
 						{7, 8, 9, 67},
 						{42, 0, 35, 68}};
 
 uint8_t interrupted = 0;
 
-uint8_t key = 0;
+int key = 0;
 
 uint8_t global_state = 0;
 
@@ -37,6 +37,7 @@ void calibrate();
 
 void manual_mode();
 void automatic_mode();
+void automatic_op_mode();
 void get_time();
 
 void init_keyboard(){
@@ -47,37 +48,40 @@ void init_keyboard(){
 
 	NVIC_EnableIRQ(EINT3_IRQn);
 	NVIC_EnableIRQ(TIMER2_IRQn);
-	// menu();
 }
 
 /*
  * CONFIGURACION DE PINES
  *
  * P2 para conectar el teclado 4x4
- * P2.[7:4] ENTRADAS GPIO por INTERRUPCION FLANCO SUBIDA con PULLDOWN
- * P2.[3:0] SALIDAS GPIO con PULLDOWN
+ * Pines P2.[7:0] como GPIO asociados a pull-down
  */
 void config_pinsel(){
 	PINSEL_CFG_Type pinsel;
 	pinsel.Funcnum = PINSEL_FUNC_0;
 	pinsel.OpenDrain = PINSEL_PINMODE_NORMAL;
 	pinsel.Pinmode = PINSEL_PINMODE_PULLDOWN;
-	pinsel.Pinnum = PINSEL_PORT_2;
+	pinsel.Portnum = PINSEL_PORT_2;
 
 	for(uint8_t pin = PIN_0; pin<=PIN_7; pin++){
 		pinsel.Pinnum = pin;
 		PINSEL_ConfigPin(&pinsel);
 	}
-
 }
 
+/*
+ * 	CONGIGURAION DE PINES GPIO
+ *
+ * P2.[7:4] ENTRADAS GPIO por INTERRUPCION FLANCO SUBIDA con PULLDOWN
+ * P2.[3:0] SALIDAS GPIO con PULLDOWN
+ * P0.22 como salida (LED en la placa)
+ *
+ */
 void config_gpio_keyboard(){
-	// GPIO pin 22 de la placa
-	GPIO_SetDir(0, (1<<22), OUTPUT);
-	GPIO_ClearValue(0, (1<<22));
+	GPIO_SetDir(PORT_0, (1<<PIN_22), OUTPUT);
+	GPIO_ClearValue(PORT_0, (1<<PIN_22));
 
-	// GPIO para calibrar
-	GPIO_SetDir(0, (1<<18), INPUT);
+	GPIO_SetDir(PORT_0, (1<<PIN_18), INPUT);
 
 	GPIO_SetDir(PORT_2, ROW_PINS, INPUT);	// P2.[3:0] como entradas
 	GPIO_SetDir(PORT_2, COL_PINS, OUTPUT);	// P2.[7:4] como salidas
@@ -191,6 +195,7 @@ void EINT3_IRQHandler(){
 
 			if(key == 65) automatic_mode();
 			else if(key == 66) manual_mode();
+			else if(key == 67) automatic_op_mode();
 			else if(key == 68) menu();
 		}
 
@@ -237,7 +242,8 @@ void menu(){
 	char *str_msg = "\n\r***** MENU *****\n\r"
 							"Seleccione modo: \n\r"
 							"A:\t Automatico \n\r"
-							"B:\t Manual \n\r";
+							"B:\t Manual \n\r"
+							"C:\t Automatico con temporizado\n\r";
 	print_msg(str_msg);
    /* uint8_t msg[] = {"\n\r***** MENU *****\n\r"
     				"Seleccione modo: \n\r"
@@ -255,9 +261,6 @@ void manual_mode(){
 		char *str_msg = "\n\rModo Manual seleccionado\n\r"
 						"\n\rIngrese angulo de giro: (2 digitos)";
 		print_msg(str_msg);
-		/*uint8_t msg[] = {"\n\rModo Manual seleccionado\n\r"
-						"\n\rIngrese angulo de giro: (2 digitos)"};
-		send_message(msg, sizeof(msg));*/
 		manual = 1;
 	}
 
@@ -266,19 +269,19 @@ void manual_mode(){
 		if(cont == 2){
 			angle_n += key;
 
+			char *str = "\n\rAngulo: ";
+
+			print_msg(str);
+
+			char num[2];
+			sprintf(num, "\n\r%d", angle_n);
+			print_msg(num);
+
 			char *str_msg = "\n\rIngrese sentido de giro:"
 							"\n\r '*': Antihorario '#' Horario";
 
 			print_msg(str_msg);
-/*
-			uint8_t msg2[13];
-			sprintf(msg2, "\n\rAngulo: %d", angle_n);
-			send_message(msg2, sizeof(msg2));
 
-			uint8_t msg[] = "\n\rIngrese sentido de giro:"
-							"\n\r '*': Antihorario '#' Horario";
-
-			send_message(msg, sizeof(msg));*/
 		}
 	}
 
@@ -304,7 +307,7 @@ void automatic_mode(){
 	/*uint8_t msg[] = {"\n\rModo Automatico seleccionado\n\r"};
 	send_message(msg, sizeof(msg));
 */
-	enable_ldr();
+	enable_ldr(key);
 	start_motor();
 }
 
@@ -325,8 +328,13 @@ void calibrate(){
 	//uint8_t msg2[] = {"\n\r..calibrando!\n\r"};
 	//send_message(msg2, sizeof(msg2));
 }
-void get_time(){
 
+void automatic_op_mode(){
+	char *str_msg = "\n\rModo Automatico y temporizador seleccionado\n\r";
+	print_msg(str_msg);
+
+	enable_ldr(key);
+	start_motor();
 }
 
 
