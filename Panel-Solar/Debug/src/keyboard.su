@@ -1,0 +1,15 @@
+/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc/core_cm3.h:928:22:NVIC_EnableIRQ	16	static
+/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc/core_cm3.h:941:22:NVIC_DisableIRQ	16	static
+../src/keyboard.c:42:6:init_keyboard	8	static
+../src/keyboard.c:60:6:config_pinsel	16	static
+../src/keyboard.c:74:6:config_gpio_keyboard	8	static
+../src/keyboard.c:92:6:config_timer2	32	static
+../src/keyboard.c:117:6:TIMER2_IRQHandler	8	static
+../src/keyboard.c:166:6:EINT3_IRQHandler	16	static
+../src/keyboard.c:206:6:read_keyboard	8	static
+../src/keyboard.c:230:9:get_key	4	static
+../src/keyboard.c:234:6:menu	16	static
+../src/keyboard.c:252:6:manual_mode	16	static
+../src/keyboard.c:299:6:automatic_mode	16	static
+../src/keyboard.c:311:6:calibrate	8	static
+../src/keyboard.c:328:6:get_time	4	static

@@ -1,0 +1,12 @@
+/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc/core_cm3.h:928:22:NVIC_EnableIRQ	16	static
+/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc/core_cm3.h:941:22:NVIC_DisableIRQ	16	static
+../src/stepper_motor.c:45:6:initStepper	8	static
+../src/stepper_motor.c:50:6:config_gpio_motor	16	static
+../src/stepper_motor.c:77:6:config_timer0	32	static
+../src/stepper_motor.c:108:6:TIMER0_IRQHandler	8	static
+../src/stepper_motor.c:131:6:set_mode	16	static
+../src/stepper_motor.c:142:6:turnRight	8	static
+../src/stepper_motor.c:158:6:turnLeft	8	static
+../src/stepper_motor.c:174:6:stopMotor	8	static
+../src/stepper_motor.c:190:6:turnAngle	24	static
+../src/stepper_motor.c:201:6:start_motor	8	static
