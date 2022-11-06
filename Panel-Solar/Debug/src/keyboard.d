@@ -10,6 +10,7 @@ src/keyboard.o src/keyboard.d: ../src/keyboard.c \
  /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_pinsel.h \
  /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_timer.h \
  /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc/stepper_motor.h \
+ /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc/keyboard.h \
  /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc/bluetooh.h \
  /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_uart.h \
  /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_gpdma.h \
@@ -26,6 +27,7 @@ src/keyboard.o src/keyboard.d: ../src/keyboard.c \
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_pinsel.h:
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_timer.h:
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc/stepper_motor.h:
+/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc/keyboard.h:
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc/bluetooh.h:
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_uart.h:
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc/lpc17xx_gpdma.h:

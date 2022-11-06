@@ -45,9 +45,8 @@ void init_keyboard(){
 	config_gpio_keyboard();
 	config_timer2();
 
-
-	NVIC_EnableIRQ(EINT3_IRQn);
 	NVIC_EnableIRQ(TIMER2_IRQn);
+	NVIC_EnableIRQ(EINT3_IRQn);
 }
 
 /*
@@ -55,6 +54,8 @@ void init_keyboard(){
  *
  * P2 para conectar el teclado 4x4
  * Pines P2.[7:0] como GPIO asociados a pull-down
+ *
+ * P0.18 con pull-down asociada y funcion GPIO
  */
 void config_pinsel(){
 	PINSEL_CFG_Type pinsel;
@@ -67,6 +68,10 @@ void config_pinsel(){
 		pinsel.Pinnum = pin;
 		PINSEL_ConfigPin(&pinsel);
 	}
+
+	pinsel.Portnum = PINSEL_PORT_0;
+	pinsel.Pinnum = PIN_18;
+	PINSEL_ConfigPin(&pinsel);
 }
 
 /*
@@ -82,6 +87,8 @@ void config_gpio_keyboard(){
 	GPIO_ClearValue(PORT_0, (1<<PIN_22));
 
 	GPIO_SetDir(PORT_0, (1<<PIN_18), INPUT);
+	GPIO_IntCmd(PORT_0, (1<<PIN_18), FALLING_EDGE);
+	GPIO_ClearInt(PORT_0, (1<<PIN_18));
 
 	GPIO_SetDir(PORT_2, ROW_PINS, INPUT);	// P2.[3:0] como entradas
 	GPIO_SetDir(PORT_2, COL_PINS, OUTPUT);	// P2.[7:4] como salidas
@@ -146,18 +153,7 @@ void TIMER2_IRQHandler(){
 			}
 	}
 
-	if(calibrated == 0){
-		static uint8_t conta = 0;
-		if(conta == 100){
-			conta = 0;
-			calibrate();
-			if(~(LPC_GPIO0->FIOPIN & (1<<18))){
-				calibrated = 1;
-				stopMotor();
-			}
-		}
-		conta++;
-	}
+
 
 	TIM_ClearIntPending(LPC_TIM2, TIM_MR2_INT);
 }
@@ -180,15 +176,21 @@ void EINT3_IRQHandler(){
 
 	read_keyboard();
 
-	if(key == 68 && global_state == 0) global_state = 1;
+	if(GPIO_GetIntStatus(PORT_0, PIN_18, FALLING_EDGE)){
+		global_state = 1;
+		calibrated = 1;
+		set_mode(2);
+		GPIO_ClearInt(PORT_0, PIN_18);
+		LPC_GPIOINT->IO0IntEnF &= ~(1<<PIN_18);
+		//GPIO_IntCmd(PORT_0, (0<<PIN_18), FALLING_EDGE);
+	}
+	if(key == 68 && global_state == 0){
+		calibrate();
+	}
 
 	if(global_state == 1){
 
-		if(calibrated == 0){
-			calibrate();
-			calibrated = 1;
-		}
-		else if(calibrated == 1){
+		if(calibrated == 1){
 			if(manual == 1){
 				manual_mode();
 			}
@@ -245,13 +247,6 @@ void menu(){
 							"B:\t Manual \n\r"
 							"C:\t Automatico con temporizado\n\r";
 	print_msg(str_msg);
-   /* uint8_t msg[] = {"\n\r***** MENU *****\n\r"
-    				"Seleccione modo: \n\r"
-    				"A:\t Automatico \n\r"
-    				"B:\t Manual \n\r"};
-
-    send_message(msg, sizeof(msg));
-*/
 }
 
 
@@ -269,18 +264,12 @@ void manual_mode(){
 		if(cont == 2){
 			angle_n += key;
 
-			char *str = "\n\rAngulo: ";
+			char num[84];
+			sprintf(num,"\n\rAngulo: %d°"
+						"\n\rIngrese sentido de giro:"
+						"\n\r'*': Antihorario '#' Horario", angle_n);
 
-			print_msg(str);
-
-			char num[2];
-			sprintf(num, "\n\r%d", angle_n);
 			print_msg(num);
-
-			char *str_msg = "\n\rIngrese sentido de giro:"
-							"\n\r '*': Antihorario '#' Horario";
-
-			print_msg(str_msg);
 
 		}
 	}
@@ -289,7 +278,6 @@ void manual_mode(){
 		turnAngle(angle_n);
 		if(key == 35) set_mode(1);
 		if(key == 42) set_mode(0);
-		//menu();
 	}
 
 	cont++;
@@ -304,29 +292,13 @@ void automatic_mode(){
 	char *str_msg = "\n\rModo Automatico seleccionado\n\r";
 	print_msg(str_msg);
 
-	/*uint8_t msg[] = {"\n\rModo Automatico seleccionado\n\r"};
-	send_message(msg, sizeof(msg));
-*/
 	enable_ldr(key);
 	start_motor();
 }
 
 void calibrate(){
-	//char *msg = "\n\rCalibrando..\n\r";
-	//print_msg(msg);
-	/*uint8_t msg[] = {"\n\rCalibrando..\n\r"};
-	send_message(msg, sizeof(msg));*/
-	//uint32_t ang = 25;
-	//turnAngle(ang);
-	set_mode(0);
 
-	//while(LPC_GPIO0->FIOPIN & (1<<18));
-
-	//char *msg2 = "\n\r...calibrando\n\r";
-	//print_msg(msg2);
-	//stopMotor();
-	//uint8_t msg2[] = {"\n\r..calibrando!\n\r"};
-	//send_message(msg2, sizeof(msg2));
+	set_mode(1);
 }
 
 void automatic_op_mode(){

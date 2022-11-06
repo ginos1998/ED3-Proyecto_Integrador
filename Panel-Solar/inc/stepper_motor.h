@@ -13,6 +13,8 @@
 #include "lpc17xx_timer.h"
 #include "lpc17xx_pinsel.h"
 
+#include "keyboard.h"
+
 #define PORT_0 (uint8_t) 0
 
 #define BOBINA_0_PIN (uint8_t) (6) 	// P0.6

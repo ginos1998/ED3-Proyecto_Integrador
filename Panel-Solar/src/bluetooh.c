@@ -105,7 +105,7 @@ void DMA_IRQHandler(void){
 	GPDMA_ChannelCmd(0, DISABLE);
 	LPC_GPDMACH0->DMACCConfig = 0;
 	NVIC_DisableIRQ(DMA_IRQn);
-
+	memset(str_send_package, 0, 512);
 }
 
 void send_message(uint8_t msg[], uint32_t size){

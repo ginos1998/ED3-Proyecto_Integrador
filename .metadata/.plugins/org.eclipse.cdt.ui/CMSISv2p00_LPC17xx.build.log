@@ -1,4 +1,4 @@
-19:07:25 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
+22:55:10 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
 make -r -j8 all 
 make[1]: No se hace nada para 'main-build'.
 Performing post-build steps
@@ -14,7 +14,7 @@ arm-none-eabi-size libCMSISv2p00_LPC17xx.a ; # arm-none-eabi-objdump -h -S libCM
    1305	      0	  10852	  12157	   2f7d	lpc17xx_emac.o (ex libCMSISv2p00_LPC17xx.a)
     182	      0	      0	    182	     b6	lpc17xx_exti.o (ex libCMSISv2p00_LPC17xx.a)
     908	     32	      0	    940	    3ac	lpc17xx_gpdma.o (ex libCMSISv2p00_LPC17xx.a)
-    572	      0	      0	    572	    23c	lpc17xx_gpio.o (ex libCMSISv2p00_LPC17xx.a)
+    608	      0	      0	    608	    260	lpc17xx_gpio.o (ex libCMSISv2p00_LPC17xx.a)
    2388	      0	     52	   2440	    988	lpc17xx_i2c.o (ex libCMSISv2p00_LPC17xx.a)
    1684	      0	      0	   1684	    694	lpc17xx_i2s.o (ex libCMSISv2p00_LPC17xx.a)
       2	      0	      0	      2	      2	lpc17xx_libcfg_default.o (ex libCMSISv2p00_LPC17xx.a)
@@ -33,5 +33,5 @@ arm-none-eabi-size libCMSISv2p00_LPC17xx.a ; # arm-none-eabi-objdump -h -S libCM
     314	      0	      0	    314	    13a	lpc17xx_wdt.o (ex libCMSISv2p00_LPC17xx.a)
  
 
-19:07:26 Build Finished. 0 errors, 0 warnings. (took 787ms)
+22:55:11 Build Finished. 0 errors, 0 warnings. (took 1s.215ms)
 

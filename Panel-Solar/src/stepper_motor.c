@@ -150,6 +150,7 @@ void turnRight(){
 			steps = 0;
 			manual_mod = 0;
 			stopMotor();
+			menu();
 		}
 
 	}
@@ -166,6 +167,7 @@ void turnLeft(){
 			steps = 0;
 			manual_mod = 0;
 			stopMotor();
+			menu();
 		}
 	}
 

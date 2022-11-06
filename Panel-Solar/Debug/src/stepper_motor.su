@@ -6,7 +6,7 @@
 ../src/stepper_motor.c:108:6:TIMER0_IRQHandler	8	static
 ../src/stepper_motor.c:131:6:set_mode	16	static
 ../src/stepper_motor.c:142:6:turnRight	8	static
-../src/stepper_motor.c:158:6:turnLeft	8	static
-../src/stepper_motor.c:174:6:stopMotor	8	static
-../src/stepper_motor.c:190:6:turnAngle	24	static
-../src/stepper_motor.c:201:6:start_motor	8	static
+../src/stepper_motor.c:159:6:turnLeft	8	static
+../src/stepper_motor.c:176:6:stopMotor	8	static
+../src/stepper_motor.c:192:6:turnAngle	24	static
+../src/stepper_motor.c:203:6:start_motor	8	static
