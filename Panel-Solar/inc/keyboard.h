@@ -34,6 +34,15 @@ typedef enum{
 	PIN_22 = (uint32_t) 22
 }PINES;
 
+typedef enum{
+	LETTER_A = 65,
+	LETTER_B = 66,
+	LETTER_C = 67,
+	LETTER_D = 68,
+	NUMERAL = 35,
+	ASTERISK = 42
+}CHARS;
+
 // puerto asociado al teclado
 #define PORT_2 (uint8_t) 2
 #define PORT_0 (uint8_t) 0

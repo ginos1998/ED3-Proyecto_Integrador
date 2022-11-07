@@ -1,11 +1,11 @@
-21:02:57 **** Incremental Build of configuration Debug for project Panel-Solar ****
+12:13:41 **** Incremental Build of configuration Debug for project Panel-Solar ****
 make -r -j8 all 
 make[1]: No se hace nada para 'main-build'.
 Performing post-build steps
 arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
    text	   data	    bss	    dec	    hex	filename
-  20320	    180	   1108	  21608	   5468	Panel-Solar.axf
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
  
 
-21:02:58 Build Finished. 0 errors, 0 warnings. (took 838ms)
+12:13:42 Build Finished. 0 errors, 0 warnings. (took 1s.147ms)
 

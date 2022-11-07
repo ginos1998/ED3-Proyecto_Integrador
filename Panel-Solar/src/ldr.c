@@ -1,29 +1,48 @@
 /*
- * ldr.c
+ * @file 	ldr.c
+ * @brief	Maneja el sensado de los LDR
+ * @version	1.0.0
+ * @date	Created on: 22 oct. 2022
+ * @author	Grupo 4
  *
- *  Created on: 22 oct. 2022
- *      Author: ginos
  */
 #include "ldr.h"
 
-uint32_t ldr_1_val = 0;
-uint32_t ldr_2_val = 0;
+typedef enum{
+	MATCH_TIM1 = 100,
+	MATCH_TIM3 = 500
+}TIMER_MR;
 
-uint32_t match_val_ldr = 10;
-uint32_t match_val_op = 500;
-uint32_t operating_time = 0;
+typedef enum{
+	PRESCALE_TIM1 = 22726,
+	PRESCALE_TIM3 = 1000
+}TIMER_PS;
 
-uint32_t total_op_time = 0;
+struct{
+	TIM_TIMERCFG_Type timer_1;
+	TIM_MATCHCFG_Type mat_10;
 
-uint32_t operating_mode = 0;
+	TIM_TIMERCFG_Type timer_3;
+	TIM_MATCHCFG_Type mat_30;
+}TIMER;
 
-uint32_t operating = 1;
+struct{
+	uint32_t ldr_1_val;
+	uint32_t ldr_2_val;
+	int error;
+}LDR_VALUES;
 
-uint32_t cont = 0;
+struct{
+	uint32_t operating_time;
+	float total_op_time;
+}SYS_TIMES;
 
-uint8_t i = 0;
+struct{
+	uint8_t n_still;
+	uint8_t error_threshold;
+	uint8_t op_mode;
 
-int error = 0;
+}SYS_VAR;
 
 void config_pin();
 void config_adc();
@@ -32,9 +51,22 @@ void config_timer3_ldr();
 
 void init_ldr(){
 	config_pin();
-	config_adc();
 	config_timer1_ldr();
 	config_timer3_ldr();
+	config_adc();
+
+
+	LDR_VALUES.ldr_1_val = 0;
+	LDR_VALUES.ldr_2_val = 0;
+	LDR_VALUES.error = 0;
+
+	SYS_TIMES.operating_time = 0;
+	SYS_TIMES.total_op_time = 0;
+
+	SYS_VAR.error_threshold = 220;
+	SYS_VAR.n_still = 0;
+	SYS_VAR.op_mode = 67;
+
 }
 
 void config_pin(){
@@ -56,8 +88,9 @@ void config_adc(){
 	ADC_ChannelCmd(LPC_ADC, ADC_CHANNEL_0, ENABLE);
 	ADC_ChannelCmd(LPC_ADC, ADC_CHANNEL_1, ENABLE);
 
-	ADC_BurstCmd(LPC_ADC, 1);
+	ADC_BurstCmd(LPC_ADC, 0);
 	ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT10);
+	ADC_EdgeStartConfig(LPC_ADC, 1);
 
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, SET);
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN1, SET);
@@ -66,88 +99,86 @@ void config_adc(){
 }
 
 void config_timer1_ldr(){
-	TIM_TIMERCFG_Type timer1;
-	timer1.PrescaleOption = TIM_PRESCALE_TICKVAL;
-	timer1.PrescaleValue = 22726;
-	TIM_Init(LPC_TIM1, TIM_TIMER_MODE, &timer1);
 
-	TIM_MATCHCFG_Type mat10;
-	mat10.StopOnMatch = DISABLE;
-	mat10.ResetOnMatch = ENABLE;
-	mat10.MatchChannel = 0;
-	mat10.IntOnMatch = ENABLE;
-	mat10.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;
-	mat10.MatchValue = match_val_ldr;
-	TIM_ConfigMatch(LPC_TIM1, &mat10);
+	TIMER.timer_1.PrescaleOption = TIM_PRESCALE_TICKVAL;
+	TIMER.timer_1.PrescaleValue = PRESCALE_TIM1;
+	TIM_Init(LPC_TIM1, TIM_TIMER_MODE, &TIMER.timer_1);
+
+	TIMER.mat_10.StopOnMatch = DISABLE;
+	TIMER.mat_10.ResetOnMatch = ENABLE;
+	TIMER.mat_10.MatchChannel = 0;
+	TIMER.mat_10.IntOnMatch = DISABLE;
+	TIMER.mat_10.ExtMatchOutputType = TIM_EXTMATCH_TOGGLE;
+	TIMER.mat_10.MatchValue = MATCH_TIM1;
+	TIM_ConfigMatch(LPC_TIM1, &TIMER.mat_10);
 
 	TIM_Cmd(LPC_TIM1, DISABLE);
-	TIM_ClearIntPending(LPC_TIM1, TIM_MR0_INT);
-	// NVIC_SetPriority(TIMER1_IRQn, 1);
-	NVIC_DisableIRQ(TIMER1_IRQn);
+	//TIM_ClearIntPending(LPC_TIM1, TIM_MR0_INT);
+	//NVIC_DisableIRQ(TIMER1_IRQn);
 }
 
 void config_timer3_ldr(){
-	TIM_TIMERCFG_Type timer3;
-	timer3.PrescaleOption = TIM_PRESCALE_USVAL;
-	timer3.PrescaleValue = 1000;
-	TIM_Init(LPC_TIM3, TIM_TIMER_MODE, &timer3);
 
-	TIM_MATCHCFG_Type mat30;
-	mat30.StopOnMatch = DISABLE;
-	mat30.ResetOnMatch = ENABLE;
-	mat30.MatchChannel = 0;
-	mat30.IntOnMatch = ENABLE;
-	mat30.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;
-	mat30.MatchValue = match_val_op;
-	TIM_ConfigMatch(LPC_TIM3, &mat30);
+	TIMER.timer_3.PrescaleOption = TIM_PRESCALE_USVAL;
+	TIMER.timer_3.PrescaleValue = PRESCALE_TIM3;
+	TIM_Init(LPC_TIM3, TIM_TIMER_MODE, &TIMER.timer_3);
 
+	TIMER.mat_30.StopOnMatch = DISABLE;
+	TIMER.mat_30.ResetOnMatch = ENABLE;
+	TIMER.mat_30.MatchChannel = 0;
+	TIMER.mat_30.IntOnMatch = ENABLE;
+	TIMER.mat_30.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;
+	TIMER.mat_30.MatchValue = MATCH_TIM3;
+	TIM_ConfigMatch(LPC_TIM3, &TIMER.mat_30);
 	TIM_Cmd(LPC_TIM3, DISABLE);
 	TIM_ClearIntPending(LPC_TIM3, TIM_MR0_INT);
-	// NVIC_SetPriority(TIMER3_IRQn, 1);
 	NVIC_DisableIRQ(TIMER3_IRQn);
 }
 
 void ADC_IRQHandler(){
+
 	NVIC_DisableIRQ(ADC_IRQn);
 
 	if(ADC_ChannelGetStatus(LPC_ADC, ADC_CHANNEL_0, 1) && ADC_ChannelGetStatus(LPC_ADC, ADC_CHANNEL_1, 1)){
-		ldr_1_val = ADC_ChannelGetData(LPC_ADC, ADC_CHANNEL_0);
-		ldr_2_val = ADC_ChannelGetData(LPC_ADC, ADC_CHANNEL_1);
-		error = (ldr_2_val - ldr_1_val);
+		LDR_VALUES.ldr_1_val = ADC_ChannelGetData(LPC_ADC, ADC_CHANNEL_0);
+		LDR_VALUES.ldr_2_val = ADC_ChannelGetData(LPC_ADC, ADC_CHANNEL_1);
+		LDR_VALUES.error = (LDR_VALUES.ldr_2_val - LDR_VALUES.ldr_1_val);
 
-		if(error < 0) error *= -1;
+		if(LDR_VALUES.error < 0) LDR_VALUES.error *= -1;
 
-		if(error > 230){
-			if(ldr_1_val > ldr_2_val){
-				set_mode(1);
-			}else if(ldr_1_val < ldr_2_val){
-				set_mode(0);
+		if(LDR_VALUES.error > SYS_VAR.error_threshold){
+			if(LDR_VALUES.ldr_1_val > LDR_VALUES.ldr_2_val){
+				set_mode(ROTATE_CLOCKWISE);
+			}else if(LDR_VALUES.ldr_1_val < LDR_VALUES.ldr_2_val){
+				set_mode(ROTATE_COUNTERCLOCKWISE);
 			}
-			i=0;
+			SYS_VAR.n_still = 0;
 		}
-		else set_mode(2);
+		else set_mode(STOP_MOTOR);
 	}
-	enable_ldr();
+
+	enable_ldr(1);
 }
 
 void TIMER1_IRQHandler(){
-	operating_time+=10;
+	SYS_TIMES.operating_time+=10;
+	TIM_ClearIntPending(LPC_TIM1, TIM_MR0_INT);
 	TIM_Cmd(LPC_TIM1, DISABLE);
-	TIM_ClearIntPending(LPC_TIM1, TIM_MR1_INT);
 	NVIC_DisableIRQ(TIMER1_IRQn);
 }
 
 void TIMER3_IRQHandler(){
 	NVIC_DisableIRQ(TIMER3_IRQn);
-	if(error <= 230){
-		i++;
-		if(i == 4){
-			set_mode(2);
+	if(LDR_VALUES.error <= SYS_VAR.error_threshold){
+		SYS_VAR.n_still++;
+		if(SYS_VAR.n_still == 4){
+			SYS_VAR.n_still = 0;
+			set_mode(STOP_MOTOR);
 			disable_ldr();
 			TIM_Cmd(LPC_TIM3, DISABLE);
-			total_op_time = operating_time/1000;
+			SYS_TIMES.total_op_time = (float)SYS_TIMES.operating_time/1000;
 			char str_msg[30];
-			sprintf(str_msg, "\n\rTiempo de operacion: %d", total_op_time);
+			sprintf(str_msg, "\n\rTiempo de operacion: %f [s]", SYS_TIMES.total_op_time);
 			print_msg(str_msg);
 		}
 	}
@@ -160,14 +191,17 @@ void TIMER3_IRQHandler(){
  * x: 67 --> automatic mode with operating time
  * x: 65 --> only automatic mode
  */
-void enable_ldr(int x){
-	if(x==67){
-		operating_time = 0;
+void enable_ldr(int mode){
+	if(mode == SYS_VAR.op_mode){
+		SYS_TIMES.operating_time = 0;
 		TIM_Cmd(LPC_TIM3, ENABLE);
 		NVIC_EnableIRQ(TIMER3_IRQn);
 	}
 	TIM_Cmd(LPC_TIM1, ENABLE);
+	TIM_ClearIntPending(LPC_TIM1, TIM_MR0_INT);
 	NVIC_EnableIRQ(TIMER1_IRQn);
+
+	NVIC_ClearPendingIRQ(ADC_IRQn);
 	NVIC_EnableIRQ(ADC_IRQn);
 }
 

@@ -22,7 +22,7 @@
 #define CH1 (uint8_t) 1
 
 void init_ldr();
-void enable_ldr();
+void enable_ldr(int mode);
 void disable_ldr();
 
 #endif /* LDR_H_ */

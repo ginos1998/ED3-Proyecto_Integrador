@@ -6,10 +6,7 @@
  */
 #include "stepper_motor.h"
 
-uint8_t		step_in_360;		// pasos del motor en 360 grados (datasheet)
-uint8_t 	seq_step = 4;		// nro para que el motor de un paso
 float 	steps_to_turn = 0;		// pasos para girar el motor hasta un cierto angulo
-uint8_t		time_to_turn;		// tiempo para que el motor gire un cierto angulo
 
 uint32_t 	steps = 0;
 
@@ -103,16 +100,6 @@ void config_timer0(){
 	NVIC_DisableIRQ(TIMER0_IRQn);
 }
 
-/*
- * 	1000
- * 	1100
- * 	0100
- * 	0110
- * 	0010
- * 	0011
- *  0001
- *  1000
- */
 void TIMER0_IRQHandler(){
 	NVIC_DisableIRQ(TIMER0_IRQn);
 
@@ -122,8 +109,6 @@ void TIMER0_IRQHandler(){
 	}else if(state == 0){
 		if (clockwise == 2) stopMotor();
 	}
-
-	//else if (clockwise == 3) turnAngle(180);
 
 	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT);
 	NVIC_EnableIRQ(TIMER0_IRQn);
@@ -136,9 +121,8 @@ void TIMER0_IRQHandler(){
  * 	mode 2: stop
  * 	mode>2 | mode<0: error ==> por defecto, sentido horario
  */
-void set_mode(uint8_t mode){
-	//if(mode <= 0 || mode <=2)	clockwise = mode;
-	//else clockwise = 1;
+void set_mode(MOTOR_STATUS mode){
+
 	prev_angle = current_angle;
 	total_steps = 0;
 	clockwise = mode;
@@ -160,8 +144,6 @@ void turnRight(){
 		}else{
 			current_angle = 0;
 		}
-
-	//float aux = (float) total_steps;
 
 	if(manual_mod == 1){
 		steps++;
@@ -201,24 +183,15 @@ void stopMotor(){
 	TIM_Cmd(LPC_TIM0, DISABLE);
 	NVIC_DisableIRQ(TIMER0_IRQn);
 	state = 0;
-	//clockwise = 2;
 }
 
-/*
- * 1 step ---> step_in_360
- * x = ? <---- angle
- *
- * 1 step -----------> 20 ms
- * steps_to_turn ----> x
- */
 void turnAngle(uint32_t angle){
-	//steps_to_turn = angle*512/360;
+
 	float a = (float) angle;
 	steps_to_turn = (a/180)*2048;
 
 	manual_mod = 1;
 
-	//turnRight();
 }
 
 void start_motor(){
@@ -227,8 +200,9 @@ void start_motor(){
 }
 
 
-void isCalib(){
-	calib = 1;
+void set_calib(){
+	char *str_msg = "\n\r..Sistema calibrado\n\r";
+	print_msg(str_msg);
 }
 
 float get_current_angle(){

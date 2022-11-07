@@ -1,9 +1,9 @@
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc/core_cm3.h:928:22:NVIC_EnableIRQ	16	static
 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc/core_cm3.h:941:22:NVIC_DisableIRQ	16	static
-../src/bluetooh.c:23:6:initUART	16	static
-../src/bluetooh.c:41:6:config_pin_uart	16	static
-../src/bluetooh.c:53:6:config_uart	24	static
-../src/bluetooh.c:63:6:config_gpdma	24	static
-../src/bluetooh.c:102:6:DMA_IRQHandler	8	static
-../src/bluetooh.c:111:6:send_message	16	static
-../src/bluetooh.c:120:6:print_msg	16	static
+../src/bluetooh.c:28:6:initUART	16	static
+../src/bluetooh.c:46:6:config_pin_uart	16	static
+../src/bluetooh.c:63:6:config_uart	24	static
+../src/bluetooh.c:80:6:config_gpdma	24	static
+../src/bluetooh.c:127:6:DMA_IRQHandler	8	static
+../src/bluetooh.c:144:6:send_message	16	static
+../src/bluetooh.c:155:6:print_msg	16	static

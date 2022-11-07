@@ -1,4 +1,4 @@
-21:02:33 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
+12:04:40 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
 make -r -j8 all 
 make[1]: No se hace nada para 'main-build'.
 Performing post-build steps
@@ -32,7 +32,7 @@ arm-none-eabi-size libCMSISv2p00_LPC17xx.a ; # arm-none-eabi-objdump -h -S libCM
    2912	      0	      0	   2912	    b60	lpc17xx_uart.o (ex libCMSISv2p00_LPC17xx.a)
     314	      0	      0	    314	    13a	lpc17xx_wdt.o (ex libCMSISv2p00_LPC17xx.a)
  
-21:02:34 **** Incremental Build of configuration Debug for project Panel-Solar ****
+12:04:41 **** Incremental Build of configuration Debug for project Panel-Solar ****
 make -r -j8 all 
 Building file: ../src/ldr.c
 Invoking: MCU C Compiler
@@ -43,17 +43,17 @@ Building target: Panel-Solar.axf
 Invoking: MCU Linker
 arm-none-eabi-gcc -nostdlib -L"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug" -Xlinker -Map="Panel-Solar.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "Panel-Solar_Debug.ld" -o "Panel-Solar.axf"  ./src/Panel-Solar.o ./src/bluetooh.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o ./src/keyboard.o ./src/ldr.o ./src/stepper_motor.o   -lCMSISv2p00_LPC17xx
 Memory region         Used Size  Region Size  %age Used
-       MFlash512:       20500 B       512 KB      3.91%
-        RamLoc32:        1288 B        32 KB      3.93%
+       MFlash512:       21040 B       512 KB      4.01%
+        RamLoc32:        1320 B        32 KB      4.03%
         RamAHB32:          0 GB        32 KB      0.00%
 Finished building target: Panel-Solar.axf
  
 Performing post-build steps
 arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
    text	   data	    bss	    dec	    hex	filename
-  20320	    180	   1108	  21608	   5468	Panel-Solar.axf
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
  
-21:02:55 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
+12:04:54 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
 make -r -j8 all 
 make[1]: No se hace nada para 'main-build'.
 Performing post-build steps
@@ -87,19 +87,145 @@ arm-none-eabi-size libCMSISv2p00_LPC17xx.a ; # arm-none-eabi-objdump -h -S libCM
    2912	      0	      0	   2912	    b60	lpc17xx_uart.o (ex libCMSISv2p00_LPC17xx.a)
     314	      0	      0	    314	    13a	lpc17xx_wdt.o (ex libCMSISv2p00_LPC17xx.a)
  
-21:02:56 **** Incremental Build of configuration Debug for project Panel-Solar ****
+12:04:56 **** Incremental Build of configuration Debug for project Panel-Solar ****
 make -r -j8 all 
 make[1]: No se hace nada para 'main-build'.
 Performing post-build steps
 arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
    text	   data	    bss	    dec	    hex	filename
-  20320	    180	   1108	  21608	   5468	Panel-Solar.axf
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
  
-21:02:57 **** Incremental Build of configuration Debug for project Panel-Solar ****
+12:04:58 **** Incremental Build of configuration Debug for project Panel-Solar ****
 make -r -j8 all 
 make[1]: No se hace nada para 'main-build'.
 Performing post-build steps
 arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
    text	   data	    bss	    dec	    hex	filename
-  20320	    180	   1108	  21608	   5468	Panel-Solar.axf
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
+ 
+12:10:47 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
+make -r -j8 all 
+make[1]: No se hace nada para 'main-build'.
+Performing post-build steps
+arm-none-eabi-size libCMSISv2p00_LPC17xx.a ; # arm-none-eabi-objdump -h -S libCMSISv2p00_LPC17xx.a >libCMSISv2p00_LPC17xx.lss
+   text	   data	    bss	    dec	    hex	filename
+      0	      0	      0	      0	      0	core_cm3.o (ex libCMSISv2p00_LPC17xx.a)
+    400	      4	      0	    404	    194	system_LPC17xx.o (ex libCMSISv2p00_LPC17xx.a)
+    926	      0	     40	    966	    3c6	debug_frmwrk.o (ex libCMSISv2p00_LPC17xx.a)
+    714	      0	      0	    714	    2ca	lpc17xx_adc.o (ex libCMSISv2p00_LPC17xx.a)
+   5738	      0	     11	   5749	   1675	lpc17xx_can.o (ex libCMSISv2p00_LPC17xx.a)
+    296	      0	      0	    296	    128	lpc17xx_clkpwr.o (ex libCMSISv2p00_LPC17xx.a)
+    250	      0	      0	    250	     fa	lpc17xx_dac.o (ex libCMSISv2p00_LPC17xx.a)
+   1305	      0	  10852	  12157	   2f7d	lpc17xx_emac.o (ex libCMSISv2p00_LPC17xx.a)
+    182	      0	      0	    182	     b6	lpc17xx_exti.o (ex libCMSISv2p00_LPC17xx.a)
+    908	     32	      0	    940	    3ac	lpc17xx_gpdma.o (ex libCMSISv2p00_LPC17xx.a)
+    608	      0	      0	    608	    260	lpc17xx_gpio.o (ex libCMSISv2p00_LPC17xx.a)
+   2388	      0	     52	   2440	    988	lpc17xx_i2c.o (ex libCMSISv2p00_LPC17xx.a)
+   1684	      0	      0	   1684	    694	lpc17xx_i2s.o (ex libCMSISv2p00_LPC17xx.a)
+      2	      0	      0	      2	      2	lpc17xx_libcfg_default.o (ex libCMSISv2p00_LPC17xx.a)
+    684	      0	      0	    684	    2ac	lpc17xx_mcpwm.o (ex libCMSISv2p00_LPC17xx.a)
+    116	      0	      0	    116	     74	lpc17xx_nvic.o (ex libCMSISv2p00_LPC17xx.a)
+    184	      0	      0	    184	     b8	lpc17xx_pinsel.o (ex libCMSISv2p00_LPC17xx.a)
+   1414	      0	      0	   1414	    586	lpc17xx_pwm.o (ex libCMSISv2p00_LPC17xx.a)
+   1234	      0	      0	   1234	    4d2	lpc17xx_qei.o (ex libCMSISv2p00_LPC17xx.a)
+    346	      0	      0	    346	    15a	lpc17xx_rit.o (ex libCMSISv2p00_LPC17xx.a)
+   2242	      0	      0	   2242	    8c2	lpc17xx_rtc.o (ex libCMSISv2p00_LPC17xx.a)
+    824	      0	      0	    824	    338	lpc17xx_spi.o (ex libCMSISv2p00_LPC17xx.a)
+   1498	      0	      0	   1498	    5da	lpc17xx_ssp.o (ex libCMSISv2p00_LPC17xx.a)
+    264	      0	      0	    264	    108	lpc17xx_systick.o (ex libCMSISv2p00_LPC17xx.a)
+   1440	      0	      0	   1440	    5a0	lpc17xx_timer.o (ex libCMSISv2p00_LPC17xx.a)
+   2912	      0	      0	   2912	    b60	lpc17xx_uart.o (ex libCMSISv2p00_LPC17xx.a)
+    314	      0	      0	    314	    13a	lpc17xx_wdt.o (ex libCMSISv2p00_LPC17xx.a)
+ 
+12:10:49 **** Incremental Build of configuration Debug for project Panel-Solar ****
+make -r -j8 all 
+Building file: ../src/ldr.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSISv2p00_LPC17xx -D__LPC17XX__ -D__REDLIB__ -I"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc" -I"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc" -I"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/ldr.d" -MT"src/ldr.o" -MT"src/ldr.d" -o "src/ldr.o" "../src/ldr.c"
+Finished building: ../src/ldr.c
+ 
+Building target: Panel-Solar.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug" -Xlinker -Map="Panel-Solar.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "Panel-Solar_Debug.ld" -o "Panel-Solar.axf"  ./src/Panel-Solar.o ./src/bluetooh.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o ./src/keyboard.o ./src/ldr.o ./src/stepper_motor.o   -lCMSISv2p00_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       21040 B       512 KB      4.01%
+        RamLoc32:        1320 B        32 KB      4.03%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: Panel-Solar.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
+   text	   data	    bss	    dec	    hex	filename
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
+ 
+12:10:51 **** Incremental Build of configuration Debug for project Panel-Solar ****
+make -r -j8 all 
+make[1]: No se hace nada para 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
+   text	   data	    bss	    dec	    hex	filename
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
+ 
+12:13:37 **** Incremental Build of configuration Debug for project CMSISv2p00_LPC17xx ****
+make -r -j8 all 
+make[1]: No se hace nada para 'main-build'.
+Performing post-build steps
+arm-none-eabi-size libCMSISv2p00_LPC17xx.a ; # arm-none-eabi-objdump -h -S libCMSISv2p00_LPC17xx.a >libCMSISv2p00_LPC17xx.lss
+   text	   data	    bss	    dec	    hex	filename
+      0	      0	      0	      0	      0	core_cm3.o (ex libCMSISv2p00_LPC17xx.a)
+    400	      4	      0	    404	    194	system_LPC17xx.o (ex libCMSISv2p00_LPC17xx.a)
+    926	      0	     40	    966	    3c6	debug_frmwrk.o (ex libCMSISv2p00_LPC17xx.a)
+    714	      0	      0	    714	    2ca	lpc17xx_adc.o (ex libCMSISv2p00_LPC17xx.a)
+   5738	      0	     11	   5749	   1675	lpc17xx_can.o (ex libCMSISv2p00_LPC17xx.a)
+    296	      0	      0	    296	    128	lpc17xx_clkpwr.o (ex libCMSISv2p00_LPC17xx.a)
+    250	      0	      0	    250	     fa	lpc17xx_dac.o (ex libCMSISv2p00_LPC17xx.a)
+   1305	      0	  10852	  12157	   2f7d	lpc17xx_emac.o (ex libCMSISv2p00_LPC17xx.a)
+    182	      0	      0	    182	     b6	lpc17xx_exti.o (ex libCMSISv2p00_LPC17xx.a)
+    908	     32	      0	    940	    3ac	lpc17xx_gpdma.o (ex libCMSISv2p00_LPC17xx.a)
+    608	      0	      0	    608	    260	lpc17xx_gpio.o (ex libCMSISv2p00_LPC17xx.a)
+   2388	      0	     52	   2440	    988	lpc17xx_i2c.o (ex libCMSISv2p00_LPC17xx.a)
+   1684	      0	      0	   1684	    694	lpc17xx_i2s.o (ex libCMSISv2p00_LPC17xx.a)
+      2	      0	      0	      2	      2	lpc17xx_libcfg_default.o (ex libCMSISv2p00_LPC17xx.a)
+    684	      0	      0	    684	    2ac	lpc17xx_mcpwm.o (ex libCMSISv2p00_LPC17xx.a)
+    116	      0	      0	    116	     74	lpc17xx_nvic.o (ex libCMSISv2p00_LPC17xx.a)
+    184	      0	      0	    184	     b8	lpc17xx_pinsel.o (ex libCMSISv2p00_LPC17xx.a)
+   1414	      0	      0	   1414	    586	lpc17xx_pwm.o (ex libCMSISv2p00_LPC17xx.a)
+   1234	      0	      0	   1234	    4d2	lpc17xx_qei.o (ex libCMSISv2p00_LPC17xx.a)
+    346	      0	      0	    346	    15a	lpc17xx_rit.o (ex libCMSISv2p00_LPC17xx.a)
+   2242	      0	      0	   2242	    8c2	lpc17xx_rtc.o (ex libCMSISv2p00_LPC17xx.a)
+    824	      0	      0	    824	    338	lpc17xx_spi.o (ex libCMSISv2p00_LPC17xx.a)
+   1498	      0	      0	   1498	    5da	lpc17xx_ssp.o (ex libCMSISv2p00_LPC17xx.a)
+    264	      0	      0	    264	    108	lpc17xx_systick.o (ex libCMSISv2p00_LPC17xx.a)
+   1440	      0	      0	   1440	    5a0	lpc17xx_timer.o (ex libCMSISv2p00_LPC17xx.a)
+   2912	      0	      0	   2912	    b60	lpc17xx_uart.o (ex libCMSISv2p00_LPC17xx.a)
+    314	      0	      0	    314	    13a	lpc17xx_wdt.o (ex libCMSISv2p00_LPC17xx.a)
+ 
+12:13:38 **** Incremental Build of configuration Debug for project Panel-Solar ****
+make -r -j8 all 
+Building file: ../src/ldr.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSISv2p00_LPC17xx -D__LPC17XX__ -D__REDLIB__ -I"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Drivers/inc" -I"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/Panel-Solar/inc" -I"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/inc" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -fstack-usage -specs=redlib.specs -MMD -MP -MF"src/ldr.d" -MT"src/ldr.o" -MT"src/ldr.d" -o "src/ldr.o" "../src/ldr.c"
+Finished building: ../src/ldr.c
+ 
+Building target: Panel-Solar.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"/mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug" -Xlinker -Map="Panel-Solar.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "Panel-Solar_Debug.ld" -o "Panel-Solar.axf"  ./src/Panel-Solar.o ./src/bluetooh.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o ./src/keyboard.o ./src/ldr.o ./src/stepper_motor.o   -lCMSISv2p00_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       21040 B       512 KB      4.01%
+        RamLoc32:        1320 B        32 KB      4.03%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: Panel-Solar.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
+   text	   data	    bss	    dec	    hex	filename
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
+ 
+12:13:41 **** Incremental Build of configuration Debug for project Panel-Solar ****
+make -r -j8 all 
+make[1]: No se hace nada para 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "Panel-Solar.axf"; # arm-none-eabi-objcopy -v -O binary "Panel-Solar.axf" "Panel-Solar.bin" ; # checksum -p LPC1769 -d "Panel-Solar.bin";
+   text	   data	    bss	    dec	    hex	filename
+  20868	    172	   1148	  22188	   56ac	Panel-Solar.axf
  

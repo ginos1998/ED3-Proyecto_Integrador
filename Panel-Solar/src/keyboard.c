@@ -19,8 +19,6 @@ int key = 0;
 
 uint8_t global_state = 0;
 
-uint8_t turn_right = 0;
-
 uint32_t angle_n;
 
 uint8_t manual = 0;
@@ -93,11 +91,9 @@ void config_gpio_keyboard(){
 	GPIO_SetDir(PORT_2, ROW_PINS, INPUT);	// P2.[3:0] como entradas
 	GPIO_SetDir(PORT_2, COL_PINS, OUTPUT);	// P2.[7:4] como salidas
 
-	//FIO_IntCmd(0, 0x0F, 0); 	// Inicializo interrupciones por flanco Ascendente en P2.[3:0]
 	GPIO_IntCmd(PORT_2, ROW_PINS, RISING_EDGE);
-	//FIO_ClearInt(0, 0x0F);		// Limpio bandera de interrupcion en P2.[3:0] antes de habilitarlas
 	GPIO_ClearInt(PORT_2, ROW_PINS);
-	// NVIC_SetPriority(EINT3_IRQn, 3);
+
 }
 
 
@@ -123,8 +119,6 @@ void config_timer2(){
 
 	TIM_Cmd(LPC_TIM2, ENABLE);
 	TIM_ClearIntPending(LPC_TIM2, TIM_MR2_INT);
-
-	// NVIC_SetPriority(TIMER0_IRQn, 1);
 }
 
 /*
@@ -184,14 +178,14 @@ void EINT3_IRQHandler(){
 	read_keyboard();
 
 	if(GPIO_GetIntStatus(PORT_0, PIN_18, FALLING_EDGE)){
-		isCalib();
+		set_calib();
 		global_state = 1;
 		calibrated = 1;
-		set_mode(2);
+		set_mode(STOP_MOTOR);
 		GPIO_ClearInt(PORT_0, PIN_18);
 		LPC_GPIOINT->IO0IntEnF &= ~(1<<PIN_18);
 	}
-	if(key == 68 && global_state == 0){
+	if(key == LETTER_D && global_state == 0){
 		calibrate();
 	}
 
@@ -200,13 +194,11 @@ void EINT3_IRQHandler(){
 		if(calibrated == 1){
 
 			if(manual == 1) manual_mode();
-			if(key == 65) automatic_mode();
-			else if(key == 66) manual_mode();
-			else if(key == 67) automatic_op_mode();
-			else if(key == 68) menu();
+			if(key == LETTER_A) automatic_mode();
+			else if(key == LETTER_B) manual_mode();
+			else if(key == LETTER_C) automatic_op_mode();
+			else if(key == LETTER_D) menu();
 		}
-
-
 	}
 
 	interrupted = 0;
@@ -234,7 +226,6 @@ void read_keyboard(){
 		GPIO_ClearInt(PORT_2, PIN_3);
 	}
 
-	//FIO_ClearInt(PORT_2, 0xFFFFF);
 	GPIO_ClearInt(PORT_2, ROW_PINS);
 
 }
@@ -245,7 +236,7 @@ uint8_t get_key(){
 
 void menu(){
 	disable_ldr();
-	set_mode(2);
+	set_mode(STOP_MOTOR);
 	char *str_msg = "\n\r***** MENU *****\n\r"
 						"Seleccione modo: \n\r"
 						"A:\t Automatico \n\r"
@@ -269,15 +260,24 @@ void manual_mode(){
 		if(cont == 2){
 			angle_n += key;
 			char num[84];
-			sprintf(num,"\n\rNo se puede girar un angulo: %d°", angle_n);
+			sprintf(num,"\n\rAngulo ingresado: %d°"
+						"\n\r'*': Antihorario | '#' Horario", angle_n);
 			print_msg(num);
 		}
 	}
 
 	if(cont == 3){
 		turnAngle(angle_n);
-		if(key == 35 && (get_current_angle() - angle_n) > 0) set_mode(1);
-		if(key == 42 && (get_current_angle() + angle_n) < 60) set_mode(0);
+		if(key == NUMERAL && (get_current_angle() - angle_n) > 0)
+			set_mode(ROTATE_CLOCKWISE);
+		else if(key == ASTERISK && (get_current_angle() + angle_n) < 60)
+			set_mode(ROTATE_COUNTERCLOCKWISE);
+		else{
+			char num[84];
+			sprintf(num,"\n\rNo se puede girar %d° "
+						"en el sentido indicado", angle_n);
+			print_msg(num);
+		}
 	}
 
 	cont++;
@@ -297,8 +297,9 @@ void automatic_mode(){
 }
 
 void calibrate(){
-
-	set_mode(1);
+	char *str_msg = "\n\rCalibrando..\n\r";
+	print_msg(str_msg);
+	set_mode(ROTATE_CLOCKWISE);
 }
 
 void automatic_op_mode(){
