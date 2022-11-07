@@ -23,6 +23,14 @@ uint8_t 	state = 0;
 
 uint8_t 	manual_mod = 0;
 
+uint8_t 	calib = 0;
+
+float current_angle = 0;
+
+float prev_angle = 0;
+
+float total_steps = 0;
+
 /*
  * 1000
  * 1100
@@ -109,8 +117,8 @@ void TIMER0_IRQHandler(){
 	NVIC_DisableIRQ(TIMER0_IRQn);
 
 	if(state == 1){
-		if(clockwise == 1) turnRight();
-		else if (clockwise == 0) turnLeft();
+		if(clockwise == 1 && get_current_angle() >= 0) turnRight();
+		else if (clockwise == 0 && get_current_angle() < 60) turnLeft();
 	}else if(state == 0){
 		if (clockwise == 2) stopMotor();
 	}
@@ -131,6 +139,8 @@ void TIMER0_IRQHandler(){
 void set_mode(uint8_t mode){
 	//if(mode <= 0 || mode <=2)	clockwise = mode;
 	//else clockwise = 1;
+	prev_angle = current_angle;
+	total_steps = 0;
 	clockwise = mode;
 	if(state == 0 && mode < 2){
 		state = 1;
@@ -143,6 +153,15 @@ void turnRight(){
 	LPC_GPIO0->FIOPIN = seq_half_step_right[flag];
 	flag++;
 	if(flag == 7)	flag = 0;
+
+	if(calib == 1){
+			total_steps++;
+			current_angle = prev_angle - (total_steps/2048)*180;
+		}else{
+			current_angle = 0;
+		}
+
+	//float aux = (float) total_steps;
 
 	if(manual_mod == 1){
 		steps++;
@@ -160,6 +179,9 @@ void turnLeft(){
 	LPC_GPIO0->FIOPIN = seq_half_step_left[flag];
 	flag++;
 	if(flag == 7)	flag = 0;
+
+	total_steps++;
+	current_angle = prev_angle + (total_steps/2048)*180;
 
 	if(manual_mod == 1){
 		steps++;
@@ -197,10 +219,18 @@ void turnAngle(uint32_t angle){
 	manual_mod = 1;
 
 	//turnRight();
-
 }
 
 void start_motor(){
 	TIM_Cmd(LPC_TIM0, ENABLE);
 	NVIC_EnableIRQ(TIMER0_IRQn);
+}
+
+
+void isCalib(){
+	calib = 1;
+}
+
+float get_current_angle(){
+	return current_angle;
 }

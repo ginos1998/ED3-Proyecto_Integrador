@@ -11,7 +11,6 @@ uint32_t ldr_2_val = 0;
 
 uint32_t match_val_ldr = 10;
 uint32_t match_val_op = 500;
-uint32_t tim3_time = 0;
 uint32_t operating_time = 0;
 
 uint32_t total_op_time = 0;
@@ -118,7 +117,7 @@ void ADC_IRQHandler(){
 
 		if(error < 0) error *= -1;
 
-		if(error > 250){
+		if(error > 230){
 			if(ldr_1_val > ldr_2_val){
 				set_mode(1);
 			}else if(ldr_1_val < ldr_2_val){
@@ -140,16 +139,15 @@ void TIMER1_IRQHandler(){
 
 void TIMER3_IRQHandler(){
 	NVIC_DisableIRQ(TIMER3_IRQn);
-	tim3_time++;
-	if(error <= 250){
+	if(error <= 230){
 		i++;
 		if(i == 4){
 			set_mode(2);
 			disable_ldr();
 			TIM_Cmd(LPC_TIM3, DISABLE);
 			total_op_time = operating_time/1000;
-			char str_msg[35] = "\n\rTiempo de operacion: ";
-			sprintf(str_msg, "%d\n\r", total_op_time);
+			char str_msg[30];
+			sprintf(str_msg, "\n\rTiempo de operacion: %d", total_op_time);
 			print_msg(str_msg);
 		}
 	}
@@ -164,6 +162,7 @@ void TIMER3_IRQHandler(){
  */
 void enable_ldr(int x){
 	if(x==67){
+		operating_time = 0;
 		TIM_Cmd(LPC_TIM3, ENABLE);
 		NVIC_EnableIRQ(TIMER3_IRQn);
 	}

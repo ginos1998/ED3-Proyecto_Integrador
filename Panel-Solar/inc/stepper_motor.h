@@ -29,5 +29,7 @@ void turnAngle(uint32_t angle);
 void set_mode(uint8_t mode);
 void stopMotor();
 void start_motor();
+void isCalib();
+float get_current_angle();
 
 #endif /* STEPPER_MOTOR_H_ */

@@ -100,6 +100,12 @@ void config_gpio_keyboard(){
 	// NVIC_SetPriority(EINT3_IRQn, 3);
 }
 
+
+/*
+ * TIMER2 configurado para interrumpir cuando haya match
+ * ps = 1000 (us), match = 1
+ * tiempo de interrumpcion: t = ps*match = 1 [ms]
+ */
 void config_timer2(){
 	TIM_TIMERCFG_Type timer2;
 	timer2.PrescaleOption = TIM_PRESCALE_USVAL;
@@ -152,15 +158,16 @@ void TIMER2_IRQHandler(){
 					break;
 			}
 	}
-
-
-
 	TIM_ClearIntPending(LPC_TIM2, TIM_MR2_INT);
 }
 
 /*
- * Cuando llega inte por GPIO, inicio systick para eliminar rebotes
- * EINT3 queda deshabilitado para procesar la ultima tecla presionada
+ * Servicio a la interrumpcion para interrupciones por EINT3 (GPIO)
+ * - Cada vez que se interrumpe, el LED asociado al pin 22 hace un toggle
+ * - Se pueden dar dos casos principales:
+ * 		~ Puede interrumpir por PIN_18 (sensor de calibracion).
+ * 		~ Puede interrumpor por ROW_PINS del teclado
+ * 	En cualquier caso, el bucle for es un simple delay para eliminar rebotes
  */
 
 void EINT3_IRQHandler(){
@@ -177,12 +184,12 @@ void EINT3_IRQHandler(){
 	read_keyboard();
 
 	if(GPIO_GetIntStatus(PORT_0, PIN_18, FALLING_EDGE)){
+		isCalib();
 		global_state = 1;
 		calibrated = 1;
 		set_mode(2);
 		GPIO_ClearInt(PORT_0, PIN_18);
 		LPC_GPIOINT->IO0IntEnF &= ~(1<<PIN_18);
-		//GPIO_IntCmd(PORT_0, (0<<PIN_18), FALLING_EDGE);
 	}
 	if(key == 68 && global_state == 0){
 		calibrate();
@@ -191,10 +198,8 @@ void EINT3_IRQHandler(){
 	if(global_state == 1){
 
 		if(calibrated == 1){
-			if(manual == 1){
-				manual_mode();
-			}
 
+			if(manual == 1) manual_mode();
 			if(key == 65) automatic_mode();
 			else if(key == 66) manual_mode();
 			else if(key == 67) automatic_op_mode();
@@ -242,10 +247,10 @@ void menu(){
 	disable_ldr();
 	set_mode(2);
 	char *str_msg = "\n\r***** MENU *****\n\r"
-							"Seleccione modo: \n\r"
-							"A:\t Automatico \n\r"
-							"B:\t Manual \n\r"
-							"C:\t Automatico con temporizado\n\r";
+						"Seleccione modo: \n\r"
+						"A:\t Automatico \n\r"
+						"B:\t Manual \n\r"
+						"C:\t Automatico con temporizado\n\r";
 	print_msg(str_msg);
 }
 
@@ -263,21 +268,16 @@ void manual_mode(){
 		if(cont == 1) angle_n = key*10;
 		if(cont == 2){
 			angle_n += key;
-
 			char num[84];
-			sprintf(num,"\n\rAngulo: %d°"
-						"\n\rIngrese sentido de giro:"
-						"\n\r'*': Antihorario '#' Horario", angle_n);
-
+			sprintf(num,"\n\rNo se puede girar un angulo: %d°", angle_n);
 			print_msg(num);
-
 		}
 	}
 
 	if(cont == 3){
 		turnAngle(angle_n);
-		if(key == 35) set_mode(1);
-		if(key == 42) set_mode(0);
+		if(key == 35 && (get_current_angle() - angle_n) > 0) set_mode(1);
+		if(key == 42 && (get_current_angle() + angle_n) < 60) set_mode(0);
 	}
 
 	cont++;
