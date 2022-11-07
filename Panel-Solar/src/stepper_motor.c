@@ -203,6 +203,7 @@ void start_motor(){
 void set_calib(){
 	char *str_msg = "\n\r..Sistema calibrado\n\r";
 	print_msg(str_msg);
+	calib = 1;
 }
 
 float get_current_angle(){

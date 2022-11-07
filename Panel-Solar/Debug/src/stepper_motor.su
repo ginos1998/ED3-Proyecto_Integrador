@@ -11,4 +11,4 @@
 ../src/stepper_motor.c:188:6:turnAngle	24	static
 ../src/stepper_motor.c:197:6:start_motor	8	static
 ../src/stepper_motor.c:203:6:set_calib	16	static
-../src/stepper_motor.c:208:7:get_current_angle	4	static
+../src/stepper_motor.c:209:7:get_current_angle	4	static

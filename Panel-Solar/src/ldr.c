@@ -9,7 +9,7 @@
 #include "ldr.h"
 
 typedef enum{
-	MATCH_TIM1 = 100,
+	MATCH_TIM1 = 10,
 	MATCH_TIM3 = 500
 }TIMER_MR;
 
@@ -88,9 +88,8 @@ void config_adc(){
 	ADC_ChannelCmd(LPC_ADC, ADC_CHANNEL_0, ENABLE);
 	ADC_ChannelCmd(LPC_ADC, ADC_CHANNEL_1, ENABLE);
 
-	ADC_BurstCmd(LPC_ADC, 0);
-	ADC_StartCmd(LPC_ADC, ADC_START_ON_MAT10);
-	ADC_EdgeStartConfig(LPC_ADC, 1);
+	ADC_BurstCmd(LPC_ADC, 1);
+	ADC_StartCmd(LPC_ADC, ADC_START_CONTINUOUS);
 
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN0, SET);
 	ADC_IntConfig(LPC_ADC, ADC_ADINTEN1, SET);
@@ -107,14 +106,14 @@ void config_timer1_ldr(){
 	TIMER.mat_10.StopOnMatch = DISABLE;
 	TIMER.mat_10.ResetOnMatch = ENABLE;
 	TIMER.mat_10.MatchChannel = 0;
-	TIMER.mat_10.IntOnMatch = DISABLE;
-	TIMER.mat_10.ExtMatchOutputType = TIM_EXTMATCH_TOGGLE;
+	TIMER.mat_10.IntOnMatch = ENABLE;
+	TIMER.mat_10.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;
 	TIMER.mat_10.MatchValue = MATCH_TIM1;
 	TIM_ConfigMatch(LPC_TIM1, &TIMER.mat_10);
 
 	TIM_Cmd(LPC_TIM1, DISABLE);
-	//TIM_ClearIntPending(LPC_TIM1, TIM_MR0_INT);
-	//NVIC_DisableIRQ(TIMER1_IRQn);
+	TIM_ClearIntPending(LPC_TIM1, TIM_MR0_INT);
+	NVIC_DisableIRQ(TIMER1_IRQn);
 }
 
 void config_timer3_ldr(){
@@ -176,9 +175,9 @@ void TIMER3_IRQHandler(){
 			set_mode(STOP_MOTOR);
 			disable_ldr();
 			TIM_Cmd(LPC_TIM3, DISABLE);
-			SYS_TIMES.total_op_time = (float)SYS_TIMES.operating_time/1000;
-			char str_msg[30];
-			sprintf(str_msg, "\n\rTiempo de operacion: %f [s]", SYS_TIMES.total_op_time);
+			SYS_TIMES.total_op_time = (float)SYS_TIMES.operating_time/1000 - 1.5;
+			char str_msg[40];
+			sprintf(str_msg, "\n\rTiempo de operacion: %.3f [s]", SYS_TIMES.total_op_time);
 			print_msg(str_msg);
 		}
 	}
@@ -200,9 +199,8 @@ void enable_ldr(int mode){
 	TIM_Cmd(LPC_TIM1, ENABLE);
 	TIM_ClearIntPending(LPC_TIM1, TIM_MR0_INT);
 	NVIC_EnableIRQ(TIMER1_IRQn);
-
-	NVIC_ClearPendingIRQ(ADC_IRQn);
 	NVIC_EnableIRQ(ADC_IRQn);
+
 }
 
 void disable_ldr(){
