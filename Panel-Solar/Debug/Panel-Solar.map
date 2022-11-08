@@ -965,7 +965,7 @@ END GROUP
                 0x00000000000000e4                __data_section_table_end = .
                 0x00000000000000e4                __bss_section_table = .
                 0x00000000000000e4        0x4 LONG 0x100000ac ADDR (.bss)
-                0x00000000000000e8        0x4 LONG 0x47c SIZEOF (.bss)
+                0x00000000000000e8        0x4 LONG 0x484 SIZEOF (.bss)
                 0x00000000000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
                 0x00000000000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x00000000000000f4                __bss_section_table_end = .
@@ -1116,171 +1116,170 @@ END GROUP
                 0x0000000000000e28       0x30 ./src/ldr.o
                 0x0000000000000e28                TIMER1_IRQHandler
  .text.TIMER3_IRQHandler
-                0x0000000000000e58       0xb8 ./src/ldr.o
+                0x0000000000000e58       0xbc ./src/ldr.o
                 0x0000000000000e58                TIMER3_IRQHandler
  .text.enable_ldr
-                0x0000000000000f10       0x5c ./src/ldr.o
-                0x0000000000000f10                enable_ldr
+                0x0000000000000f14       0x5c ./src/ldr.o
+                0x0000000000000f14                enable_ldr
  .text.disable_ldr
-                0x0000000000000f6c       0x20 ./src/ldr.o
-                0x0000000000000f6c                disable_ldr
+                0x0000000000000f70       0x20 ./src/ldr.o
+                0x0000000000000f70                disable_ldr
  .text.NVIC_EnableIRQ
-                0x0000000000000f8c       0x30 ./src/stepper_motor.o
+                0x0000000000000f90       0x30 ./src/stepper_motor.o
  .text.NVIC_DisableIRQ
-                0x0000000000000fbc       0x34 ./src/stepper_motor.o
+                0x0000000000000fc0       0x34 ./src/stepper_motor.o
  .text.initStepper
-                0x0000000000000ff0       0x10 ./src/stepper_motor.o
-                0x0000000000000ff0                initStepper
+                0x0000000000000ff4       0x10 ./src/stepper_motor.o
+                0x0000000000000ff4                initStepper
  .text.config_gpio_motor
-                0x0000000000001000       0x9e ./src/stepper_motor.o
-                0x0000000000001000                config_gpio_motor
- *fill*         0x000000000000109e        0x2 ff
+                0x0000000000001004       0x9e ./src/stepper_motor.o
+                0x0000000000001004                config_gpio_motor
+ *fill*         0x00000000000010a2        0x2 ff
  .text.config_timer0
-                0x00000000000010a0       0x6c ./src/stepper_motor.o
-                0x00000000000010a0                config_timer0
+                0x00000000000010a4       0x6c ./src/stepper_motor.o
+                0x00000000000010a4                config_timer0
  .text.TIMER0_IRQHandler
-                0x000000000000110c       0x8c ./src/stepper_motor.o
-                0x000000000000110c                TIMER0_IRQHandler
+                0x0000000000001110       0x8c ./src/stepper_motor.o
+                0x0000000000001110                TIMER0_IRQHandler
  .text.set_mode
-                0x0000000000001198       0x6c ./src/stepper_motor.o
-                0x0000000000001198                set_mode
+                0x000000000000119c       0x6c ./src/stepper_motor.o
+                0x000000000000119c                set_mode
  .text.turnRight
-                0x0000000000001204       0xfc ./src/stepper_motor.o
-                0x0000000000001204                turnRight
+                0x0000000000001208       0xfc ./src/stepper_motor.o
+                0x0000000000001208                turnRight
  .text.turnLeft
-                0x0000000000001300       0xe8 ./src/stepper_motor.o
-                0x0000000000001300                turnLeft
+                0x0000000000001304       0xe8 ./src/stepper_motor.o
+                0x0000000000001304                turnLeft
  .text.stopMotor
-                0x00000000000013e8       0x38 ./src/stepper_motor.o
-                0x00000000000013e8                stopMotor
+                0x00000000000013ec       0x38 ./src/stepper_motor.o
+                0x00000000000013ec                stopMotor
  .text.turnAngle
-                0x0000000000001420       0x48 ./src/stepper_motor.o
-                0x0000000000001420                turnAngle
+                0x0000000000001424       0x48 ./src/stepper_motor.o
+                0x0000000000001424                turnAngle
  .text.start_motor
-                0x0000000000001468       0x18 ./src/stepper_motor.o
-                0x0000000000001468                start_motor
+                0x000000000000146c       0x18 ./src/stepper_motor.o
+                0x000000000000146c                start_motor
  .text.set_calib
-                0x0000000000001480       0x28 ./src/stepper_motor.o
-                0x0000000000001480                set_calib
+                0x0000000000001484       0x28 ./src/stepper_motor.o
+                0x0000000000001484                set_calib
  .text.get_current_angle
-                0x00000000000014a8       0x14 ./src/stepper_motor.o
-                0x00000000000014a8                get_current_angle
+                0x00000000000014ac       0x14 ./src/stepper_motor.o
+                0x00000000000014ac                get_current_angle
  .text.SystemInit
-                0x00000000000014bc       0xd8 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
-                0x00000000000014bc                SystemInit
+                0x00000000000014c0       0xd8 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+                0x00000000000014c0                SystemInit
  .text.ADC_Init
-                0x0000000000001594       0x58 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x0000000000001594                ADC_Init
+                0x0000000000001598       0x58 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x0000000000001598                ADC_Init
  .text.ADC_StartCmd
-                0x00000000000015ec       0x3c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x00000000000015ec                ADC_StartCmd
+                0x00000000000015f0       0x3c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00000000000015f0                ADC_StartCmd
  .text.ADC_BurstCmd
-                0x0000000000001628       0x30 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x0000000000001628                ADC_BurstCmd
+                0x000000000000162c       0x30 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x000000000000162c                ADC_BurstCmd
  .text.ADC_IntConfig
-                0x0000000000001658       0x44 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x0000000000001658                ADC_IntConfig
+                0x000000000000165c       0x44 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x000000000000165c                ADC_IntConfig
  .text.ADC_ChannelCmd
-                0x000000000000169c       0x34 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x000000000000169c                ADC_ChannelCmd
+                0x00000000000016a0       0x34 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00000000000016a0                ADC_ChannelCmd
  .text.ADC_ChannelGetData
-                0x00000000000016d0       0x28 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x00000000000016d0                ADC_ChannelGetData
+                0x00000000000016d4       0x28 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00000000000016d4                ADC_ChannelGetData
  .text.ADC_ChannelGetStatus
-                0x00000000000016f8       0x48 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
-                0x00000000000016f8                ADC_ChannelGetStatus
+                0x00000000000016fc       0x48 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+                0x00000000000016fc                ADC_ChannelGetStatus
  .text.CLKPWR_SetPCLKDiv
-                0x0000000000001740       0x4c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x0000000000001740                CLKPWR_SetPCLKDiv
+                0x0000000000001744       0x4c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x0000000000001744                CLKPWR_SetPCLKDiv
  .text.CLKPWR_GetPCLKSEL
-                0x000000000000178c       0x20 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x000000000000178c                CLKPWR_GetPCLKSEL
+                0x0000000000001790       0x20 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x0000000000001790                CLKPWR_GetPCLKSEL
  .text.CLKPWR_GetPCLK
-                0x00000000000017ac       0x20 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x00000000000017ac                CLKPWR_GetPCLK
+                0x00000000000017b0       0x20 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x00000000000017b0                CLKPWR_GetPCLK
  .text.CLKPWR_ConfigPPWR
-                0x00000000000017cc       0x34 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
-                0x00000000000017cc                CLKPWR_ConfigPPWR
+                0x00000000000017d0       0x34 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+                0x00000000000017d0                CLKPWR_ConfigPPWR
  .text.GPDMA_Init
-                0x0000000000001800       0x38 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
-                0x0000000000001800                GPDMA_Init
+                0x0000000000001804       0x38 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
+                0x0000000000001804                GPDMA_Init
  .text.GPDMA_Setup
-                0x0000000000001838      0x1d8 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
-                0x0000000000001838                GPDMA_Setup
+                0x000000000000183c      0x1d8 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
+                0x000000000000183c                GPDMA_Setup
  .text.GPDMA_ChannelCmd
-                0x0000000000001a10       0x1c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
-                0x0000000000001a10                GPDMA_ChannelCmd
+                0x0000000000001a14       0x1c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
+                0x0000000000001a14                GPDMA_ChannelCmd
  .text.GPDMA_ClearIntPending
-                0x0000000000001a2c       0x50 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
-                0x0000000000001a2c                GPDMA_ClearIntPending
+                0x0000000000001a30       0x50 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
+                0x0000000000001a30                GPDMA_ClearIntPending
  .text.GPIO_GetPointer
-                0x0000000000001a7c       0x12 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000000000001a80       0x12 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
  .text.GPIO_SetDir
-                0x0000000000001a8e       0x18 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x0000000000001a8e                GPIO_SetDir
+                0x0000000000001a92       0x18 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000000000001a92                GPIO_SetDir
  .text.GPIO_SetValue
-                0x0000000000001aa6        0xc /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x0000000000001aa6                GPIO_SetValue
+                0x0000000000001aaa        0xc /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000000000001aaa                GPIO_SetValue
  .text.GPIO_ClearValue
-                0x0000000000001ab2        0xc /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x0000000000001ab2                GPIO_ClearValue
- *fill*         0x0000000000001abe        0x2 ff
+                0x0000000000001ab6        0xc /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000000000001ab6                GPIO_ClearValue
+ *fill*         0x0000000000001ac2        0x2 ff
  .text.GPIO_IntCmd
-                0x0000000000001ac0       0x50 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x0000000000001ac0                GPIO_IntCmd
+                0x0000000000001ac4       0x50 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000000000001ac4                GPIO_IntCmd
  .text.GPIO_GetIntStatus
-                0x0000000000001b10       0x40 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x0000000000001b10                GPIO_GetIntStatus
+                0x0000000000001b14       0x40 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000000000001b14                GPIO_GetIntStatus
  .text.GPIO_ClearInt
-                0x0000000000001b50       0x28 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
-                0x0000000000001b50                GPIO_ClearInt
+                0x0000000000001b54       0x28 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+                0x0000000000001b54                GPIO_ClearInt
  .text.check_failed
-                0x0000000000001b78        0x2 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
-                0x0000000000001b78                check_failed
- *fill*         0x0000000000001b7a        0x2 ff
+                0x0000000000001b7c        0x2 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+                0x0000000000001b7c                check_failed
+ *fill*         0x0000000000001b7e        0x2 ff
  .text.PINSEL_ConfigPin
-                0x0000000000001b7c       0x7c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
-                0x0000000000001b7c                PINSEL_ConfigPin
+                0x0000000000001b80       0x7c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+                0x0000000000001b80                PINSEL_ConfigPin
  .text.TIM_ClearIntPending
-                0x0000000000001bf8       0x4c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
-                0x0000000000001bf8                TIM_ClearIntPending
+                0x0000000000001bfc       0x4c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+                0x0000000000001bfc                TIM_ClearIntPending
  .text.TIM_Init
-                0x0000000000001c44      0x15c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
-                0x0000000000001c44                TIM_Init
- .text.TIM_Cmd  0x0000000000001da0       0x48 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
-                0x0000000000001da0                TIM_Cmd
+                0x0000000000001c48      0x15c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+                0x0000000000001c48                TIM_Init
+ .text.TIM_Cmd  0x0000000000001da4       0x48 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+                0x0000000000001da4                TIM_Cmd
  .text.TIM_ConfigMatch
-                0x0000000000001de8       0xcc /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
-                0x0000000000001de8                TIM_ConfigMatch
+                0x0000000000001dec       0xcc /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+                0x0000000000001dec                TIM_ConfigMatch
  .text.UART_Init
-                0x0000000000001eb4      0x28c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x0000000000001eb4                UART_Init
+                0x0000000000001eb8      0x28c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x0000000000001eb8                UART_Init
  .text.UART_ConfigStructInit
-                0x0000000000002140       0x12 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x0000000000002140                UART_ConfigStructInit
- *fill*         0x0000000000002152        0x2 ff
+                0x0000000000002144       0x12 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x0000000000002144                UART_ConfigStructInit
+ *fill*         0x0000000000002156        0x2 ff
  .text.UART_FIFOConfig
-                0x0000000000002154       0xa8 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x0000000000002154                UART_FIFOConfig
+                0x0000000000002158       0xa8 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x0000000000002158                UART_FIFOConfig
  .text.UART_FIFOConfigStructInit
-                0x00000000000021fc        0xe /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x00000000000021fc                UART_FIFOConfigStructInit
- *fill*         0x000000000000220a        0x2 ff
+                0x0000000000002200        0xe /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x0000000000002200                UART_FIFOConfigStructInit
+ *fill*         0x000000000000220e        0x2 ff
  .text.UART_TxCmd
-                0x000000000000220c       0x60 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
-                0x000000000000220c                UART_TxCmd
- .text.__main   0x000000000000226c        0xe /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_semihost.a(_cr__main.o)
-                0x000000000000226c                __main
-                0x000000000000226c                __CR_SEMIHOST
- .text.memset   0x000000000000227a        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
-                0x000000000000227a                memset
+                0x0000000000002210       0x60 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+                0x0000000000002210                UART_TxCmd
+ .text.__main   0x0000000000002270        0xe /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_semihost.a(_cr__main.o)
+                0x0000000000002270                __main
+                0x0000000000002270                __CR_SEMIHOST
+ .text.memset   0x000000000000227e        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(memset.o)
+                0x000000000000227e                memset
  .text.fp_round
-                0x000000000000227e       0x4c /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(fpprintf.o)
+                0x0000000000002282       0x4c /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(fpprintf.o)
  .text.pr_dec.constprop.0
-                0x00000000000022ca       0x26 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(fpprintf.o)
- .text.sprintf  0x00000000000022f0       0x6c /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(fpprintf.o)
-                0x00000000000022f0                sprintf
- *fill*         0x000000000000235c        0x4 ff
+                0x00000000000022ce       0x26 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(fpprintf.o)
+ .text.sprintf  0x00000000000022f4       0x6c /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(fpprintf.o)
+                0x00000000000022f4                sprintf
  .text.fp_display
                 0x0000000000002360      0x950 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(fpprintf.o)
  .text._initio  0x0000000000002cb0       0x78 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(initio.o)
@@ -1593,7 +1592,7 @@ END GROUP
                 [!provide]                        PROVIDE (__end_bss_RAM2 = .)
                 [!provide]                        PROVIDE (__end_bss_RamAHB32 = .)
 
-.bss            0x00000000100000ac      0x47c
+.bss            0x00000000100000ac      0x484
                 0x00000000100000ac                _bss = .
                 [!provide]                        PROVIDE (__start_bss_RAM = .)
                 [!provide]                        PROVIDE (__start_bss_RamLoc32 = .)
@@ -1633,44 +1632,43 @@ END GROUP
  .bss.SYS_TIMES
                 0x0000000010000318        0x8 ./src/ldr.o
                 0x0000000010000318                SYS_TIMES
- .bss.SYS_VAR   0x0000000010000320        0x3 ./src/ldr.o
+ .bss.SYS_VAR   0x0000000010000320        0xc ./src/ldr.o
                 0x0000000010000320                SYS_VAR
- *fill*         0x0000000010000323        0x1 
  .bss.steps_to_turn
-                0x0000000010000324        0x4 ./src/stepper_motor.o
-                0x0000000010000324                steps_to_turn
- .bss.steps     0x0000000010000328        0x4 ./src/stepper_motor.o
-                0x0000000010000328                steps
- .bss.flag      0x000000001000032c        0x1 ./src/stepper_motor.o
-                0x000000001000032c                flag
- .bss.state     0x000000001000032d        0x1 ./src/stepper_motor.o
-                0x000000001000032d                state
+                0x000000001000032c        0x4 ./src/stepper_motor.o
+                0x000000001000032c                steps_to_turn
+ .bss.steps     0x0000000010000330        0x4 ./src/stepper_motor.o
+                0x0000000010000330                steps
+ .bss.flag      0x0000000010000334        0x1 ./src/stepper_motor.o
+                0x0000000010000334                flag
+ .bss.state     0x0000000010000335        0x1 ./src/stepper_motor.o
+                0x0000000010000335                state
  .bss.manual_mod
-                0x000000001000032e        0x1 ./src/stepper_motor.o
-                0x000000001000032e                manual_mod
- .bss.calib     0x000000001000032f        0x1 ./src/stepper_motor.o
-                0x000000001000032f                calib
+                0x0000000010000336        0x1 ./src/stepper_motor.o
+                0x0000000010000336                manual_mod
+ .bss.calib     0x0000000010000337        0x1 ./src/stepper_motor.o
+                0x0000000010000337                calib
  .bss.current_angle
-                0x0000000010000330        0x4 ./src/stepper_motor.o
-                0x0000000010000330                current_angle
- .bss.prev_angle
-                0x0000000010000334        0x4 ./src/stepper_motor.o
-                0x0000000010000334                prev_angle
- .bss.total_steps
                 0x0000000010000338        0x4 ./src/stepper_motor.o
-                0x0000000010000338                total_steps
- .bss.errno     0x000000001000033c        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(errno.o)
-                0x000000001000033c                errno
+                0x0000000010000338                current_angle
+ .bss.prev_angle
+                0x000000001000033c        0x4 ./src/stepper_motor.o
+                0x000000001000033c                prev_angle
+ .bss.total_steps
+                0x0000000010000340        0x4 ./src/stepper_motor.o
+                0x0000000010000340                total_steps
+ .bss.errno     0x0000000010000344        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(errno.o)
+                0x0000000010000344                errno
  .bss.__end_of_heap
-                0x0000000010000340        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(__init_alloc.o)
-                0x0000000010000340                __end_of_heap
- .bss.__heaps   0x0000000010000344        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(__init_alloc.o)
-                0x0000000010000344                __heaps
- .bss.__Ciob    0x0000000010000348      0x1e0 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_semihost.a(__ciob.o)
-                0x0000000010000348                __Ciob
+                0x0000000010000348        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(__init_alloc.o)
+                0x0000000010000348                __end_of_heap
+ .bss.__heaps   0x000000001000034c        0x4 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_c.a(__init_alloc.o)
+                0x000000001000034c                __heaps
+ .bss.__Ciob    0x0000000010000350      0x1e0 /usr/local/mcuxpressoide-11.6.0_8187/ide/plugins/com.nxp.mcuxpresso.tools.linux_11.6.0.202112161359/tools/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libcr_semihost.a(__ciob.o)
+                0x0000000010000350                __Ciob
  *(COMMON)
-                0x0000000010000528                . = ALIGN (0x4)
-                0x0000000010000528                _ebss = .
+                0x0000000010000530                . = ALIGN (0x4)
+                0x0000000010000530                _ebss = .
                 [!provide]                        PROVIDE (__end_bss_RAM = .)
                 [!provide]                        PROVIDE (__end_bss_RamLoc32 = .)
                 [!provide]                        PROVIDE (end = .)
@@ -1686,16 +1684,16 @@ END GROUP
                 [!provide]                        PROVIDE (__end_noinit_RAM2 = .)
                 [!provide]                        PROVIDE (__end_noinit_RamAHB32 = .)
 
-.noinit         0x0000000010000528        0x0
-                0x0000000010000528                _noinit = .
+.noinit         0x0000000010000530        0x0
+                0x0000000010000530                _noinit = .
                 [!provide]                        PROVIDE (__start_noinit_RAM = .)
                 [!provide]                        PROVIDE (__start_noinit_RamLoc32 = .)
  *(.noinit*)
-                0x0000000010000528                . = ALIGN (0x4)
-                0x0000000010000528                _end_noinit = .
+                0x0000000010000530                . = ALIGN (0x4)
+                0x0000000010000530                _end_noinit = .
                 [!provide]                        PROVIDE (__end_noinit_RAM = .)
                 [!provide]                        PROVIDE (__end_noinit_RamLoc32 = .)
-                0x0000000010000528                PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
+                0x0000000010000530                PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
                 0x0000000010008000                PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
                 0xffffffffefff74c6                PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
                 0x0000000000000000                _image_start = LOADADDR (.text)
@@ -1844,23 +1842,23 @@ LOAD linker stubs
  .debug_macro   0x0000000000004d15       0xe4 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
  .debug_macro   0x0000000000004df9       0x9f /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
 
-.debug_line     0x0000000000000000     0x5bd6
+.debug_line     0x0000000000000000     0x5bd5
  .debug_line    0x0000000000000000      0x389 ./src/Panel-Solar.o
  .debug_line    0x0000000000000389      0x462 ./src/bluetooh.o
  .debug_line    0x00000000000007eb      0x160 ./src/cr_startup_lpc175x_6x.o
  .debug_line    0x000000000000094b       0xb5 ./src/crp.o
  .debug_line    0x0000000000000a00      0x71d ./src/keyboard.o
- .debug_line    0x000000000000111d      0x5ca ./src/ldr.o
- .debug_line    0x00000000000016e7      0x667 ./src/stepper_motor.o
- .debug_line    0x0000000000001d4e      0x43c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
- .debug_line    0x000000000000218a      0x694 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
- .debug_line    0x000000000000281e      0x465 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
- .debug_line    0x0000000000002c83      0x631 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
- .debug_line    0x00000000000032b4      0x859 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
- .debug_line    0x0000000000003b0d      0x21f /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
- .debug_line    0x0000000000003d2c      0x37b /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
- .debug_line    0x00000000000040a7      0x945 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
- .debug_line    0x00000000000049ec     0x11ea /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
+ .debug_line    0x000000000000111d      0x5c9 ./src/ldr.o
+ .debug_line    0x00000000000016e6      0x667 ./src/stepper_motor.o
+ .debug_line    0x0000000000001d4d      0x43c /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(system_LPC17xx.o)
+ .debug_line    0x0000000000002189      0x694 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_adc.o)
+ .debug_line    0x000000000000281d      0x465 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_clkpwr.o)
+ .debug_line    0x0000000000002c82      0x631 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpdma.o)
+ .debug_line    0x00000000000032b3      0x859 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_gpio.o)
+ .debug_line    0x0000000000003b0c      0x21f /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_libcfg_default.o)
+ .debug_line    0x0000000000003d2b      0x37b /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_pinsel.o)
+ .debug_line    0x00000000000040a6      0x945 /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_timer.o)
+ .debug_line    0x00000000000049eb     0x11ea /mnt/785C9EBA5C9E729C/FACULTAD/ED3-Panel-Solar/CMSISv2p00_LPC17xx/Debug/libCMSISv2p00_LPC17xx.a(lpc17xx_uart.o)
 
 .debug_str      0x0000000000000000    0x10a90
  .debug_str     0x0000000000000000     0xc9f9 ./src/Panel-Solar.o

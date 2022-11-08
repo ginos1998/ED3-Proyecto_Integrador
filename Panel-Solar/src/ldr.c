@@ -39,7 +39,7 @@ struct{
 
 struct{
 	uint8_t n_still;
-	uint8_t error_threshold;
+	uint32_t error_threshold;
 	uint8_t op_mode;
 
 }SYS_VAR;
@@ -63,7 +63,7 @@ void init_ldr(){
 	SYS_TIMES.operating_time = 0;
 	SYS_TIMES.total_op_time = 0;
 
-	SYS_VAR.error_threshold = 220;
+	SYS_VAR.error_threshold = 400;
 	SYS_VAR.n_still = 0;
 	SYS_VAR.op_mode = 67;
 
